@@ -1,0 +1,12 @@
+.popup__exit-button {
+    position: absolute;
+    left: 430px;
+    top: -40px;
+    background-color: black;
+    border: none;
+}
+
+
+.popup__exit-button:hover {
+    opacity: 0.6;
+}

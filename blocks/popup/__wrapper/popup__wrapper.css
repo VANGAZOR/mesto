@@ -1,0 +1,9 @@
+.popup__wrapper {
+    opacity: 0.2;
+    border-bottom: 1px solid #000000;
+    margin: 0;
+    margin-left: 36px;
+    max-width: 358px;
+    padding: 0;
+    text-decoration: none;
+}

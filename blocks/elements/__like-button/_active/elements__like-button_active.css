@@ -1,0 +1,11 @@
+.elements__like-button_active {
+    width: 22px;
+    height: 19px;
+    border: none;
+    background-image: url(../../../../images/like-pic-active.svg);
+    margin-top: 5px;
+}
+
+.elements__like-button_active:hover {
+    cursor: pointer;
+}

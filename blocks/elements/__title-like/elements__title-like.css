@@ -1,0 +1,10 @@
+.elements__title-like {
+    display: flex;
+    flex-direction: row;
+    width: 246px;
+    margin: 25px 15px 21px 21px;
+    border: 1px solid red;
+    color: black;
+    justify-content: space-between;
+    border-radius: 2px;
+}
