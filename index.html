@@ -23,7 +23,6 @@
                     <p class="profile__subtitle">Исследователь океана</p>
                 </div>
                 <button class="profile__image-button">
-                    <img src="./images/image-button-icon.svg" alt="Иконка добавления картинки" class="profile__image-button_img">
                 </button>
             </section>
             <div class="elements">
@@ -107,22 +106,24 @@
             </span>
         </footer>
     </div>  
-    <div class="popup__container">
-        <form action="#" class="popup__form">
-            <div class="popup__title">
-                Редактировать профиль
-            </div>
-            <ul class="popup__form-box">
-                <li class="popup__wrapper">
-                    <input type="text" class="popup__input popup__name" value="Жак-Ив Кусто">
-                </li>
-                <li class="popup__wrapper">
-                    <input type="text" class="popup__input popup__subname" value="Исследователь океана">
-                </li>
-            </ul>
-            <button class="popup__submit-button">Сохранить</button>
-        </form>
-        <button class="popup__exit-button"></button>
+    <div class="popup">
+        <div class="popup__container">
+            <form action="#" class="popup__form">
+                <div class="popup__title">
+                    Редактировать профиль
+                </div>
+                <ul class="popup__form-box">
+                    <li class="popup__wrapper">
+                        <input type="text" class="popup__input popup__name" value="Жак-Ив Кусто">
+                    </li>
+                    <li class="popup__wrapper">
+                        <input type="text" class="popup__input popup__subname" value="Исследователь океана">
+                    </li>
+                </ul>
+                <button class="popup__submit-button">Сохранить</button>
+            </form>
+            <button class="popup__exit-button"></button>
+        </div>
     </div>
     <script src="./index.js"></script>
 </body>

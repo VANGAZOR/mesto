@@ -18,7 +18,7 @@ function handleFormSubmit (evt) {
     subNameValue = subNameForm.value
     title.textContent = nameValue
     subTitle.textContent = subNameValue
-    wrap.classList.remove('popup')
+    wrap.classList.remove('popup__active')
     popup_cont.classList.remove('popup__container_active')
 }
 form.addEventListener('submit', handleFormSubmit); 
@@ -34,13 +34,13 @@ like_btn.addEventListener('click', function () {
 })
 
 btn.addEventListener('click', function () {
-    wrap.classList.add('popup')
+    wrap.classList.add('popup__active')
     popup_cont.classList.add('popup__container_active')
     nameForm.value = title.innerHTML
 })
 
 btn_close.addEventListener('click', function () {
-    wrap.classList.remove('popup')
+    wrap.classList.remove('popup__active')
     popup_cont.classList.remove('popup__container_active')
 })
 
