@@ -3,3 +3,9 @@
     flex-direction: column;
     margin-left: 27px;
 }
+
+@media all and (max-width: 930px) {
+    .profile__info {
+        margin-left: 0;
+    }
+}

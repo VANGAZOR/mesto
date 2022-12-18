@@ -2,12 +2,11 @@
     max-width: 190px;
     margin: 0;
     padding: 0;
-    font-family: 'Inter';
+    font-family: 'Inter', 'Arial', 'Helvetica';
     font-style: normal;
     font-weight: 900;
     font-size: 24px;
     line-height: 29px;
-    border: 1px solid red;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

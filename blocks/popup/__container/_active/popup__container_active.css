@@ -1,3 +1,15 @@
 .popup__container_active {
     display: block;
+    position: fixed;
+    left: 50%;
+    top: 20%;
+    transform: translate(-50%, 0%);
 }
+
+
+/* @media all and (max-width: 530px) {
+    .popup__container_active {
+        top: 20%;
+    }
+}
+ */

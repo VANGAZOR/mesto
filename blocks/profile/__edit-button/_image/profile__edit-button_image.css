@@ -1,3 +1,11 @@
 .profile__edit-button_image {
-    
+    width: 10px;
+    object-position: center;
+}
+
+@media all and (max-width: 530px) {
+    .profile__edit-button_image {
+        width: 7px;
+        padding: 0;
+    }
 }

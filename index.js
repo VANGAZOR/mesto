@@ -2,6 +2,7 @@ let btn = document.querySelector('.profile__edit-button')
 let btn_close = document.querySelector('.popup__exit-button')
 let popup_cont = document.querySelector('.popup__container')
 let main = document.querySelector('.main')
+let wrap = document.querySelector('.wrap')
 let popup_form = document.querySelector('.popup__form')
 let like_btn = document.querySelector('.elements__like-button')
 let like_btn_active = document.querySelector('.elements_like-button_active')
@@ -17,7 +18,7 @@ function handleFormSubmit (evt) {
     subNameValue = subNameForm.value
     title.textContent = nameValue
     subTitle.textContent = subNameValue
-    main.classList.remove('popup')
+    wrap.classList.remove('popup')
     popup_cont.classList.remove('popup__container_active')
 }
 form.addEventListener('submit', handleFormSubmit); 
@@ -33,13 +34,13 @@ like_btn.addEventListener('click', function () {
 })
 
 btn.addEventListener('click', function () {
-    main.classList.add('popup')
+    wrap.classList.add('popup')
     popup_cont.classList.add('popup__container_active')
     nameForm.value = title.innerHTML
 })
 
 btn_close.addEventListener('click', function () {
-    main.classList.remove('popup')
+    wrap.classList.remove('popup')
     popup_cont.classList.remove('popup__container_active')
 })
 

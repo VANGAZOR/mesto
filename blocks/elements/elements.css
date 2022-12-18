@@ -1,9 +1,33 @@
 .elements {
-    max-width: 880px;
+    max-width: 100%;
     display: grid;
     margin: 50px 200px 67px;
-    grid-template-columns: repeat(3, 282px);
-    grid-template-rows: repeat(2, 361px);
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     row-gap: 17px;
     column-gap: 20px;
+}
+
+@media all and (max-width: 1280px) {
+    .elements {
+        margin: 50px 15.625vw 67px;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+    }
+}
+
+@media all and (max-width: 850px) {
+    .elements {
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+        width: 280px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media all and (max-width: 530px) {
+    .elements {
+        margin-top: 36px;
+    }
 }

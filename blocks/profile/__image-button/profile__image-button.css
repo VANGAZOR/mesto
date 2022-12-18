@@ -5,9 +5,27 @@
     color: #FFFFFF;
     width: 150px;
     height: 50px;
+    margin-left: auto;
     align-self: center;
 }
 
 .profile__image-button:hover {
     opacity: 0.6;
+    cursor: pointer;
+}
+
+@media all and (max-width: 930px) {
+    .profile__image-button {
+        width: 100%;
+        margin-top: 36px;
+        margin-left: 0;
+    }
+}
+
+@media all and (max-width: 530px) {
+    .profile__image-button {
+        width: 100%;
+        margin-top: 36px;
+        margin-left: 0;
+    }
 }
