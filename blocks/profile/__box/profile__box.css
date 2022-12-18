@@ -10,6 +10,6 @@
 @media all and (max-width: 560px) {
     .profile__box {
         margin-top: 22.25px;
-        gap: 10px
+        gap: 10px;
     }
 }
