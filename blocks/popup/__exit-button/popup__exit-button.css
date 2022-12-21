@@ -8,8 +8,9 @@
     position: absolute;
     left: 430px;
     top: -40px;
-    background-color: black;
+    background-color: transparent;
     border: none;
+    cursor: pointer;
 }
 
 
