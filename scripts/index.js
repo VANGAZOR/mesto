@@ -9,12 +9,20 @@ const subNameForm = document.querySelector('.popup__input_type_subname')
 const title = document.querySelector('.profile__title')
 const subTitle = document.querySelector('.profile__subtitle')
 
+// function handleFormSubmit (evt) {
+//     evt.preventDefault() 
+//     title.textContent = nameForm.value
+//     subTitle.textContent = subNameForm.value
+//     popupOn.classList.remove('popup_active')
+// }
+
 function handleFormSubmit (evt) {
     evt.preventDefault() 
     title.textContent = nameForm.value
     subTitle.textContent = subNameForm.value
-    popupOn.classList.remove('popup_active')
+    closePopup()
 }
+
 form.addEventListener('submit', handleFormSubmit); 
 
 // like_btn.addEventListener('click', function () {
