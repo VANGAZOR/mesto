@@ -5,6 +5,7 @@
     align-items: flex-end;
     margin-top: 24px;
     margin-left: 2px;
+    justify-content: center;
 }
 
 @media all and (max-width: 560px) {

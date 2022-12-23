@@ -1,9 +1,0 @@
-.popup__container_active {
-    display: block;
-    position: fixed;
-    left: 50%;
-    top: 20%;
-    transform: translate(-50%, 0%);
-}
-
-
