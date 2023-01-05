@@ -1,0 +1,9 @@
+.popup_type_pic {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: transparent;
+    position: relative;
+    justify-content: flex-start;
+    align-items: flex-start;
+}

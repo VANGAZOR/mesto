@@ -1,3 +1,14 @@
 .elements__like-button_active {
+    width: 22px;
+    height: 19px;
+    border: none;
     background-image: url(../../../../images/like-pic-active.svg);
+    background-color: transparent;
+    margin-top: 30px;
+    margin-right: 20px;
+}
+
+.elements__like-button_active:hover {
+    opacity: 0.5;
+    cursor: pointer;
 }
