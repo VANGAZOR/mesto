@@ -12,12 +12,15 @@ const picture = document.querySelector('.popup__img')
 const popupAddOn = document.querySelector('.popup_type_add')
 const popupEditOn = document.querySelector('.popup_type_edit-profile')
 const popupPicOn = document.querySelector('.popup_type_pic')
+const popupContainerPic = popupPicOn.querySelector('.popup__container-pic')
+const popupContainerAdd = popupAddOn.querySelector('.popup__container')
+const popupContainerEdit = popupEditOn.querySelector('.popup__container')
 
 const buttonOpenEditPopup = document.querySelector('.profile__edit-button')
-const buttonCloseEditPopup = popupEditOn.querySelector('.popup__exit-button')
+const buttonCloseEditPopup = popupContainerEdit.querySelector('.popup__exit-button')
 const buttonOpenAddPopup = document.querySelector('.profile__image-button')
-const buttonCloseAddPopup = popupAddOn.querySelector('.popup__exit-button')
-const buttonClosePicPopup = popupPicOn.querySelector('.popup__exit-button')
+const buttonCloseAddPopup = popupContainerAdd.querySelector('.popup__exit-button')
+const buttonClosePicPopup = popupContainerPic.querySelector('.popup__exit-button')
 
 const elementsContainer = document.querySelector('.elements')
 const cardTemplate = document.querySelector('#card-template').content
@@ -58,11 +61,11 @@ cardElement.querySelector('.elements__title').textContent = initialCards[i].name
 cardElement.querySelector('.elements__image').src = initialCards[i].link
 elementsContainer.append(cardElement)
 cardElement.querySelector('.elements__image').addEventListener('click', function(e) {
-popupPicOn.parentElement.classList.add('popup_active')
+popupPicOn.classList.add('popup_active')
 const linkPic = cardElement.querySelector('.elements__image').src
 const textPic = cardElement.querySelector('.elements__title').textContent
-popupPicOn.querySelector('.popup__img').src = linkPic
-popupPicOn.querySelector('.popup__img-title').textContent = textPic
+popupContainerPic.querySelector('.popup__img').src = linkPic
+popupContainerPic.querySelector('.popup__img-title').textContent = textPic
 })
 cardElement.querySelector('.elements__trash-button').addEventListener('click', function(e) {
 const item = cardElement.querySelector('.elements__trash-button').closest('.elements__card')
@@ -91,24 +94,24 @@ form.addEventListener('submit', handleFormSubmit);
 // }
 
 const openEditPopup = () => {
-  popupEditOn.parentElement.classList.add('popup_active')
+  popupEditOn.classList.add('popup_active')
   nameForm.value = title.textContent
   subNameForm.value = subTitle.textContent
 }
 
 const closeEditPopup = () => {
-  popupEditOn.parentElement.classList.remove('popup_active')
+  popupEditOn.classList.remove('popup_active')
 }
 
 buttonOpenEditPopup.addEventListener('click', openEditPopup)
 buttonCloseEditPopup.addEventListener('click', closeEditPopup)
 
 const openAddPopup = () => {
-  popupAddOn.parentElement.classList.add('popup_active')
+  popupAddOn.classList.add('popup_active')
 }
 
 const closeAddPopup = () => {
-  popupAddOn.parentElement.classList.remove('popup_active')
+  popupAddOn.classList.remove('popup_active')
 }
 
 buttonOpenAddPopup.addEventListener('click', openAddPopup)
@@ -138,11 +141,11 @@ const addCard = (evt) => {
 popupAddOn.querySelector('.popup__form').addEventListener('submit', addCard); 
 
 const openCard = () => {
-  popupPicOn.parentElement.classList.add('popup_active')
+  popupPicOn.classList.add('popup_active')
 }
 
 const closeCard = () => {
-  popupPicOn.parentElement.classList.remove('popup_active')
+  popupPicOn.classList.remove('popup_active')
 }
 picture.addEventListener('click', openCard)
 buttonClosePicPopup.addEventListener('click', closeCard)
