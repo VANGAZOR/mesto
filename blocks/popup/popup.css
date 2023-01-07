@@ -11,9 +11,10 @@
     left: 0;
     box-sizing: border-box;
     z-index: 5;
-    transition: opacity 0.3s ease-out;
+    transition: visibility 0.33s, opacity 0.33s;
     opacity: 0;
-    height: 0;
-    overflow: hidden;
+    /* height: 0;
+    overflow: hidden; */
+    visibility: hidden;
 }
 

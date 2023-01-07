@@ -1,9 +1,8 @@
 const likeButton = document.querySelector('.elements__like-button')
 const likeButtonActive = document.querySelector('.elements__like-button_active')
-const form = document.querySelector('.popup__form')
+
+
 const formAddPic = document.querySelector('.popup_type_add-pic')
-const nameForm = document.querySelector('.popup__input_type_name')
-const subNameForm = document.querySelector('.popup__input_type_subname')
 const title = document.querySelector('.profile__title')
 const subTitle = document.querySelector('.profile__subtitle')
 const submitPost = document.querySelector('.popup_type_edit-profile-submit')
@@ -15,6 +14,10 @@ const popupPicOn = document.querySelector('.popup_type_pic')
 const popupContainerPic = popupPicOn.querySelector('.popup__container-pic')
 const popupContainerAdd = popupAddOn.querySelector('.popup__container')
 const popupContainerEdit = popupEditOn.querySelector('.popup__container')
+const formAdd = popupContainerAdd.querySelector('.popup__form')
+const formProfile = popupContainerEdit.querySelector('.popup__form')
+const nameForm = formProfile.querySelector('.popup__input_type_name')
+const subNameForm = formProfile.querySelector('.popup__input_type_subname')
 
 const buttonOpenEditPopup = document.querySelector('.profile__edit-button')
 const buttonCloseEditPopup = popupContainerEdit.querySelector('.popup__exit-button')
@@ -52,123 +55,77 @@ const initialCards = [
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     },
   ]; 
-  
-for (let i = 0; i < initialCards.length; i+=1) {
-const elementsContainer = document.querySelector('.elements')
-const cardTemplate = document.querySelector('#card-template').content
-const cardElement = cardTemplate.querySelector('.elements__card').cloneNode(true);
-cardElement.querySelector('.elements__title').textContent = initialCards[i].name
-cardElement.querySelector('.elements__image').src = initialCards[i].link
-elementsContainer.append(cardElement)
-cardElement.querySelector('.elements__image').addEventListener('click', function(e) {
-popupPicOn.classList.add('popup_active')
-const linkPic = cardElement.querySelector('.elements__image').src
-const textPic = cardElement.querySelector('.elements__title').textContent
-popupContainerPic.querySelector('.popup__img').src = linkPic
-popupContainerPic.querySelector('.popup__img-title').textContent = textPic
-})
-cardElement.querySelector('.elements__trash-button').addEventListener('click', function(e) {
-const item = cardElement.querySelector('.elements__trash-button').closest('.elements__card')
-item.remove()
-})
-cardElement.querySelector('.elements__like-button').addEventListener('click', function (e) { 
-e.target.classList.toggle('elements__like-button_active')
-e.target.classList.toggle('elements__like-button')}); 
-}
 
-const handleFormSubmit = (evt) => {
+const handleEditFormSubmit = (evt) => {
   evt.preventDefault() 
   title.textContent = nameForm.value
   subTitle.textContent = subNameForm.value
-  closeEditPopup()
-}
-form.addEventListener('submit', handleFormSubmit); 
-
-
-// const openPopup = (popupType) => {
-//   popupType.parentElement.classList.add('popup_active')
-// }
-
-// const closePopup = (popupType) => {
-//   popupType.parentElement.classList.remove('popup_active')
-// }
-
-const openEditPopup = () => {
-  popupEditOn.classList.add('popup_active')
-  nameForm.value = title.textContent
-  subNameForm.value = subTitle.textContent
+  closePopup(popupEditOn)
 }
 
-const closeEditPopup = () => {
-  popupEditOn.classList.remove('popup_active')
+
+const openPopup = (popupType) => {
+  popupType.classList.add('popup_active')
 }
 
-buttonOpenEditPopup.addEventListener('click', openEditPopup)
-buttonCloseEditPopup.addEventListener('click', closeEditPopup)
-
-const openAddPopup = () => {
-  popupAddOn.classList.add('popup_active')
+const closePopup = (popupType) => {
+  popupType.classList.remove('popup_active')
 }
-
-const closeAddPopup = () => {
-  popupAddOn.classList.remove('popup_active')
-}
-
-buttonOpenAddPopup.addEventListener('click', openAddPopup)
-buttonCloseAddPopup.addEventListener('click', closeAddPopup)
 
 const addCard = (evt) => {
   evt.preventDefault() 
   const elementsContainer = document.querySelector('.elements')
   const cardTemplate = document.querySelector('#card-template').content
   const cardElement = cardTemplate.querySelector('.elements__card').cloneNode(true);
-  cardElement.querySelector('.elements__title').textContent = popupAddOn.querySelector('.popup__input_type_name').value
-  cardElement.querySelector('.elements__image').src = popupAddOn.querySelector('.popup__input_type_subname').value
-  cardElement.querySelector('.elements__trash-button').addEventListener('click', function(e) {
-  const item = cardElement.querySelector('.elements__trash-button').closest('.elements__card')
-  item.remove()
-  })
-  cardElement.querySelector('.elements__image').addEventListener('click', function(e) {
-  popupPicOn.parentElement.classList.add('popup_active')})
-  cardElement.querySelector('.elements__like-button').addEventListener('click', function (e) { 
-  e.target.classList.toggle('elements__like-button_active')
-  e.target.classList.toggle('elements__like-button')})
-  elementsContainer.prepend(cardElement)
-  closeAddPopup()
+  const name = popupAddOn.querySelector('.popup__input_type_name').value
+  const link = popupAddOn.querySelector('.popup__input_type_subname').value
+  renderCard(elementsContainer, createCard(name, link), true)
+  closePopup(popupAddOn)
   evt.target.reset()
 }
 
-popupAddOn.querySelector('.popup__form').addEventListener('submit', addCard); 
+const deleteCard = (evt) => {
+  evt.target.closest('.elements__card').remove()
+}
 
-const openCard = () => {
+const maximizeCard = (evt) => {
   popupPicOn.classList.add('popup_active')
+  const linkPic = evt.target.closest('.elements__card').querySelector('.elements__image').src
+  const textPic = evt.target.closest('.elements__card').querySelector('.elements__title').textContent
+  const altPic = evt.target.closest('.elements__card').querySelector('.elements__image').alt
+  popupContainerPic.querySelector('.popup__img').src = linkPic
+  popupContainerPic.querySelector('.popup__img-title').textContent = textPic
+  popupContainerPic.querySelector('.popup__img').alt = altPic
 }
 
-const closeCard = () => {
-  popupPicOn.classList.remove('popup_active')
+const likeCard = (evt) => {
+  evt.target.classList.toggle('elements__like-button_active')
+  evt.target.classList.toggle('elements__like-button')
 }
-picture.addEventListener('click', openCard)
-buttonClosePicPopup.addEventListener('click', closeCard)
 
-function placeCard(array) {
-  const elementsContainer = document.querySelector('.elements')
-  const cardTemplate = document.querySelector('#card-template').content
+
+const createCard = (name, link) => {
+  const cardTemplate = document.querySelector('#card-template').content;
   const cardElement = cardTemplate.querySelector('.elements__card').cloneNode(true);
-  cardElement.querySelector('.elements__title').textContent = initialCards[i].name
-  cardElement.querySelector('.elements__image').src = initialCards[i].link
-  elementsContainer.append(cardElement)
-  cardElement.querySelector('.elements__image').addEventListener('click', function(e) {
-  popupPicOn.parentElement.classList.add('popup_active')
-  const linkPic = cardElement.querySelector('.elements__image').src
-  const textPic = cardElement.querySelector('.elements__title').textContent
-  popupPicOn.querySelector('.popup__img').src = linkPic
-  popupPicOn.querySelector('.popup__img-title').textContent = textPic
-  })
-  cardElement.querySelector('.elements__trash-button').addEventListener('click', function(e) {
-  const item = cardElement.querySelector('.elements__trash-button').closest('.elements__card')
-  item.remove()
-  })
-  cardElement.querySelector('.elements__like-button').addEventListener('click', function (e) { 
-  e.target.classList.toggle('elements__like-button_active')
-  e.target.classList.toggle('elements__like-button')});
+  cardElement.querySelector('.elements__title').textContent = name;
+  cardElement.querySelector('.elements__image').src = link;
+  cardElement.querySelector('.elements__image').addEventListener('click', maximizeCard)
+  cardElement.querySelector('.elements__trash-button').addEventListener('click', deleteCard)
+  cardElement.querySelector('.elements__like-button').addEventListener('click', likeCard); 
+  return cardElement
 }
+
+const renderCard = (container, card, direction=false) => {
+  direction === false ? container.append(card) : container.prepend(card)
+}
+
+initialCards.forEach( item => renderCard(elementsContainer, createCard(item.name, item.link)))
+
+picture.addEventListener('click', () => {openPopup(popupPicOn)})
+buttonClosePicPopup.addEventListener('click', () => {closePopup(popupPicOn)})
+buttonOpenAddPopup.addEventListener('click', () => {openPopup(popupAddOn)})
+buttonCloseAddPopup.addEventListener('click', () => {closePopup(popupAddOn)})
+buttonOpenEditPopup.addEventListener('click', () => {openPopup(popupEditOn)})
+buttonCloseEditPopup.addEventListener('click', () => {closePopup(popupEditOn)})
+formAdd.addEventListener('submit', addCard); 
+formProfile.addEventListener('submit', handleEditFormSubmit); 

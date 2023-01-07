@@ -1,5 +1,6 @@
 .popup_active {
-    display: flex;
+    /* display: flex;
+    height: auto; */
+    visibility: visible;
     opacity: 1;
-    height: auto;
 }
