@@ -74,9 +74,6 @@ const closePopup = (popupType) => {
 
 const addCard = (evt) => {
   evt.preventDefault() 
-  const elementsContainer = document.querySelector('.elements')
-  const cardTemplate = document.querySelector('#card-template').content
-  const cardElement = cardTemplate.querySelector('.elements__card').cloneNode(true);
   const name = popupAddOn.querySelector('.popup__input_type_name').value
   const link = popupAddOn.querySelector('.popup__input_type_subname').value
   renderCard(elementsContainer, createCard(name, link), true)
@@ -109,6 +106,7 @@ const createCard = (name, link) => {
   const cardElement = cardTemplate.querySelector('.elements__card').cloneNode(true);
   cardElement.querySelector('.elements__title').textContent = name;
   cardElement.querySelector('.elements__image').src = link;
+  cardElement.querySelector('.elements__image').alt = name;
   cardElement.querySelector('.elements__image').addEventListener('click', maximizeCard)
   cardElement.querySelector('.elements__trash-button').addEventListener('click', deleteCard)
   cardElement.querySelector('.elements__like-button').addEventListener('click', likeCard); 
@@ -116,16 +114,16 @@ const createCard = (name, link) => {
 }
 
 const renderCard = (container, card, direction=false) => {
-  direction === false ? container.append(card) : container.prepend(card)
+  !direction ? container.append(card) : container.prepend(card)
 }
 
 initialCards.forEach( item => renderCard(elementsContainer, createCard(item.name, item.link)))
 
-picture.addEventListener('click', () => {openPopup(popupPicOn)})
-buttonClosePicPopup.addEventListener('click', () => {closePopup(popupPicOn)})
-buttonOpenAddPopup.addEventListener('click', () => {openPopup(popupAddOn)})
-buttonCloseAddPopup.addEventListener('click', () => {closePopup(popupAddOn)})
-buttonOpenEditPopup.addEventListener('click', () => {openPopup(popupEditOn)})
-buttonCloseEditPopup.addEventListener('click', () => {closePopup(popupEditOn)})
+picture.addEventListener('click', () => openPopup(popupPicOn))
+buttonClosePicPopup.addEventListener('click', () => closePopup(popupPicOn))
+buttonOpenAddPopup.addEventListener('click', () => openPopup(popupAddOn))
+buttonCloseAddPopup.addEventListener('click', () => closePopup(popupAddOn))
+buttonOpenEditPopup.addEventListener('click', () => openPopup(popupEditOn))
+buttonCloseEditPopup.addEventListener('click', () => closePopup(popupEditOn))
 formAdd.addEventListener('submit', addCard); 
 formProfile.addEventListener('submit', handleEditFormSubmit); 
