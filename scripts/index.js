@@ -86,7 +86,7 @@ const deleteCard = (evt) => {
 }
 
 const maximizeCard = (evt) => {
-  popupPicOn.classList.add('popup_active')
+  openPopup(popupPicOn)
   const linkPic = evt.target.closest('.elements__card').querySelector('.elements__image').src
   const textPic = evt.target.closest('.elements__card').querySelector('.elements__title').textContent
   const altPic = evt.target.closest('.elements__card').querySelector('.elements__image').alt
